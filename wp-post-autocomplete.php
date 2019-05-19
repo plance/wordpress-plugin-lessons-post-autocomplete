@@ -13,8 +13,24 @@ if(class_exists('WpPostAutocomplete') == false):
 		public function __construct()
 		{
 			add_shortcode('post-autocomplete-form', array($this, 'post_autocomplete_form'));
+			add_action('wp_enqueue_scripts', array($this, 'wp_enqueue_scripts'));
 		}
 
+		public function wp_enqueue_scripts()
+		{
+			wp_enqueue_style('wp-post-autocomplete', plugin_dir_url(__FILE__).'assets/style.css');
+			wp_enqueue_style('wp-post-autocomplete-jquery-ui', plugin_dir_url(__FILE__).'assets/jquery-ui/jquery-ui.min.css');
+
+			wp_enqueue_script('wp-post-autocomplete', plugin_dir_url(__FILE__).'assets/script.js', array('jquery', 'jquery-ui-widget', 'jquery-ui-autocomplete'), null, true);
+
+			wp_localize_script('wp-post-autocomplete', 'WpPostAutocomplete', array(
+				'ajax' => admin_url('admin-ajax.php'),
+					'action' => 'autocomplete',
+					'security' => wp_create_nonce('autocomplete_security'),
+				)
+			);
+		}
+		
 		//===========================================================
 		// SHORTCODE
 		//===========================================================
