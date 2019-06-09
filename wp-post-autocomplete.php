@@ -80,9 +80,9 @@ if(class_exists('WpPostAutocomplete') == false):
 		 */
 		public function post_autocomplete_form()
 		{
-			$content  = '<div class="wrap-post-autocomplete">';
-			$content .= '<input type="text" class="post-autocomplete-field" placeholder="Введите текст для поиска">';
-			$content .= '</div>';
+			$content  = '<form class="wrap-post-autocomplete" method="GET">';
+			$content .= '<input type="text" name="text" class="post-autocomplete-field" placeholder="Введите текст для поиска">';
+			$content .= '</form>';
 
 			return $content;
 		}
