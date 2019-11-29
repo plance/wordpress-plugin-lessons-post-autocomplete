@@ -1,7 +1,14 @@
-.post-autocomplete-field {
+.post-autocomplete__field {
 	width: 100%;
 }
 
-.post-autocomplete-field__loader {
+.post-autocomplete__field-loader {
 	background: url('loader.gif') no-repeat center right;
+}
+
+.post-autocomplete-nofound {
+	text-align: center;
+	font-weight: bold;
+	border: 1px dotted rgb(165, 155, 155);
+	padding: 15px 0;
 }

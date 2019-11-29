@@ -1,8 +1,8 @@
 jQuery(document).ready(function($)
 {
-	jQuery(".post-autocomplete-field").autocomplete({
+	jQuery(".post-autocomplete__field").autocomplete({
 		source: function(request, response) {
-			jQuery(".post-autocomplete-field").addClass('post-autocomplete-field__loader');
+			jQuery(".post-autocomplete__field").addClass('post-autocomplete__field-loader');
 			
 			$.post(WpPostAutocomplete.ajax, {
 				term: request.term,
@@ -26,14 +26,14 @@ jQuery(document).ready(function($)
 		},
 		open: function()
 		{
-			jQuery(".post-autocomplete-field").removeClass('post-autocomplete-field__loader');
+			jQuery(".post-autocomplete__field").removeClass('post-autocomplete__field-loader');
 		},
 		select: function(e, ui)
 		{
-			jQuery(".post-autocomplete-field").val(ui.item.value);
-			jQuery('.wrap-post-autocomplete')[0].submit();
+			jQuery(".post-autocomplete__field").val(ui.item.value);
+			jQuery('.post-autocomplete-form')[0].submit();
 		},
 		minLength: 3,
-		appendTo: '.wrap-post-autocomplete',
+		appendTo: '.post-autocomplete-form',
 	});
 });
